@@ -1,0 +1,442 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+.element::-webkit-scrollbar { width: 0 !important }
+
+@font-face { 
+			font-family: SPYTYPE;
+      src: url('fonts/herbivoreDisplayGX.ttf?v=1.1') format('truetype'); 
+      font-weight:1 999;
+	}
+
+*{
+  font-family: SPYTYPE, 'Helvetica', 'sans-serif';
+  font-weight:100;
+  font-stretch:100;
+  font-variation-settings:'STYL' 0;
+  /*-webkit-transform: translate3d(0,0,0);*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: greyscale;
+  cursor:crosshair;
+  font-kerning: normal;
+  font-size:1rem;
+}
+
+
+*::selection {
+  background: rgb(125,0,255); /* WebKit/Blink Browsers */
+}
+*::-moz-selection {
+  background: rgb(125,0,255); /* Gecko Browsers */
+}
+
+body {
+  width:100vw;
+  height:100vh;
+  padding:0;
+  margin:0;
+  background-color: black;
+  color:white;
+  z-index:-1000000;
+}
+
+#textInput{
+  visibility: hidden;
+}
+
+#fps{
+  visibility: hidden;
+}
+
+.grid {
+    display:grid;
+    height: 92vh;
+    grid-template-columns: 1fr;
+    grid-template-rows:calc(3.5rem + 2vh) auto;
+    padding: 3vh;
+    font-size:1rem;
+    grid-row-gap: 2vh;
+    grid-template-areas: 
+      "header" 
+      "main";
+  }
+
+@media only screen and (min-width: 813px) {
+.grid {
+    display:grid;
+    height: 92vh;
+    grid-template-columns: 1fr;
+    grid-template-rows:calc(3.5rem + 2vh) auto;
+    padding: 3vh;
+    font-size:1rem;
+    grid-row-gap: 2vh;
+    grid-template-areas: 
+      "header" 
+      "main";
+  }
+  
+}
+
+
+
+/* HEADER FOR MOBILE ––––––––––––––––––––––––––––––––––––––––––*/
+header{
+    grid-area: header;
+    grid-template-columns: max-content;
+    display:grid;
+    max-width:94vw;
+    border-bottom:1px solid white;
+    padding-bottom:0.9rem;
+    z-index:10000;
+    grid-column-gap: 2vh;
+  }
+
+
+
+
+/* HEADER FOR DESKTOP ––––––––––––––––––––––––––––––––––––––––––*/
+@media only screen and (min-width: 813px) {
+  header{
+    grid-area: header;
+    grid-template-columns: max-content max-content max-content max-content max-content max-content;
+    max-width:94vw;
+    display:grid;
+    border-bottom:1px solid white;
+    z-index:10000;
+    padding-bottom:0.9rem;
+    grid-column-gap: 2vh;
+    
+    /*color:inherit;*/
+  }
+}
+
+
+header > p {
+  padding:0;
+  margin:0;
+  color:inherit;
+}
+
+.header-item {
+  font-variation-settings:"STYL" 0, "wght" 100, "wdth" 100;
+  padding: 0;
+  margin:0;
+  -webkit-margin-before:0em;
+  -webkit-margin-after:0em;
+  -webkit-font-smoothing: antialiased;
+}
+
+#slider {
+  display:none;
+}
+#voice {
+  display:none;
+}
+#fpsResult{
+  display:none;
+}
+#axesInfo{
+    display:none;
+  }
+
+@media only screen and (min-width: 813px) {
+  #slider {
+    display:inline;
+  }
+  #voice {
+    display:inline;
+  }
+  #fpsResult{
+    display:inline;
+  }
+  #axesInfo{
+    display:inline;
+  }
+}
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top:-.45rem; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: .1rem;
+  cursor: pointer;
+  background: white;
+}
+
+  
+button{
+    
+    font-family:SPYTYPE;
+    font-variation-settings:"STYL" 0, "wght" 100, "wdth" 100;
+    padding: 0;
+    line-height: 1.3rem;
+    background:none;
+    border:none;
+    outline:0;
+    text-align:left;
+    transition: font-variation-settings .3s, .3s;
+    color:inherit;
+  }
+  
+ .mode {
+    font-size:2rem;
+    line-height:2rem;
+    background-color:transparent;
+    border:1px solid white;
+    padding:.1rem .6rem .5rem .6rem;
+    border-radius:50px;
+}
+.mode.active {
+  color:black;
+  background-color:white;
+  border:1px solid white;
+}
+
+.mode:hover{
+    color:black;
+    background-color:white;
+    border:1px solid white;
+}
+
+.mode:active{
+    color:black;
+    background-color:white;
+    border:1px solid white;
+}
+
+#audio-btn, #video-btn {
+  visibility:hidden;
+}
+@media only screen and (min-width: 813px) {
+  #audio-btn, #video-btn {
+  visibility:visible;
+  }
+}
+p > button {
+  display:inline;
+}
+
+
+  button:hover {
+    cursor:pointer;
+  }
+
+/*MAIN GRID AREA –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.main {
+  grid-area: main;
+  width:100%;
+  max-width:94vw;
+  height:auto;
+  margin: 0;
+  grid-column: 1 / -1;
+} 
+.main > video {
+  position:absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color:inherit; 
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  display: none;
+}
+
+#canvas {
+  width:100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-filter: blur(20px) brightness(50%); /* Safari 6.0 - 9.0 */
+  filter: blur(20px) brightness(50%);
+  z-index: -100;
+  color:inherit;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+/*HIDE INFO FOR MOBILE*/
+  
+
+  #info {
+    display:none;
+  }
+
+@media only screen and (min-width: 813px) {
+  #info:hover {
+    cursor:pointer;
+    /*font-variation-settings:"wght" 100, "wdth" 200;*/
+  }
+
+  #info {
+    display:block;
+    font-variation-settings:"wght" 100, "wdth" 100;
+    transition: font-variation-settings .3s, .3s;
+  }
+}
+.info {
+  width:100vw;
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  color:inherit;
+  background-color:black;
+  padding:1rem;
+  font-family:SPYTYPE;
+  font-variation-settings:"STYL" 0, "wght" 100, "wdth" 120;
+  font-size:1.5rem;
+  text-transform: lowercase;
+  z-index: 1000000;
+  opacity:0;
+  transition:visibility .5s, opacity .5s;
+}
+
+.info > span {
+  width:60vw;
+  display:block;
+  margin:0 auto 1rem auto;
+  font-variation-settings:"STYL" -100, "wght" 100, "wdth" 100;
+}
+
+.info > span > a {
+  text-decoration: none;
+  color:inherit;
+  font-variation-settings:"STYL" -100, "wght" 160, "wdth" 100;
+  /*font-variation-settings:"STYL" 0, "wdth" 100;
+  transition:font-variation-settings .3s;*/
+  display:inline-block;
+}
+
+.info > span > a::first-letter {
+  /*color:rgb(125,0,255);*/
+}
+
+.info > .column-text > span > a {
+  text-decoration: none;
+  color:inherit;
+  font-weight:100;
+  /*font-variation-settings:"STYL" 0, "wdth" 100;
+  transition:font-variation-settings .3s;*/
+}
+
+.info > span > a:hover {
+  
+  cursor:pointer;
+}
+
+.info > .column-text > span > a:hover {
+  font-weight:100;
+  /*font-variation-settings:"STYL" 0, "wdth" 200;*/
+  cursor:pointer;
+}
+
+.info > #closeInfo {
+  font-size:.8rem;
+  font-variation-settings:"STYL" -100, "wght" 100, "wdth" 100;
+  transition: font-variation-settings .3s, .3s;
+}
+
+.info > #closeInfo:hover {
+  cursor:pointer;
+  /*font-variation-settings:"wght" 100, "wdth" 200;*/
+}
+
+.info > .column-text {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-column-gap: 2rem;
+  font-size:1.2rem;
+  font-family:SPYTYPE;
+  font-variation-settings:"STYL" -100;
+  width:60vw;
+  margin:0 auto;
+  font-weight: 100;
+}
+
+.info > .column-text > span::first-line {
+  font-variation-settings:"STYL" -100, "wdth" 200;
+  font-weight: 100;
+}
+.info > .column-text > span {
+  font-variation-settings:"STYL" -100, "wdth" 100;
+}
+
+  footer {
+    grid-area: footer;
+  }  
+
+
+
+
+
+	#result {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+		font-family: SPYTYPE;
+    font-weight:var(--f-weight);
+    font-stretch:var(--f-width);
+    font-variation-settings:var(--style-setting);
+    font-kerning:none;
+    display:block;
+    color:inherit;
+		margin: 0 0;
+		text-align: left;
+		line-height: 20vw;
+    text-transform: lowercase;
+    letter-spacing: -0.3rem;
+		text-rendering: geometricPrecision;
+    resize: none;
+		background:none;
+		border:none;
+		outline: none;
+		z-index:100000;
+	}
+
+  #result > div {
+    font-size:inherit;
+    font-weight:var(--f-weight);
+    font-stretch:var(--f-width);
+    font-variation-settings:var(--style-setting);
+    font-kerning:none;
+  }
+
+
+
+
+
+
+	

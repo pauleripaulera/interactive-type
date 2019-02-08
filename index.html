@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>interactive type project</title>
+<link rel="stylesheet"  href="site.css?v=1.0" type="text/css">
+  <!--SPEECH RECOGNITION-->
+  <!--the ?v=1.0 handles chaching problems for your users when updating a live website. increasing the version will force a reload of the file for all users-->
+  <script src="js/speech.js?v=1.0" type="text/javascript"></script>
+</head>
+<body>
+<!--BODY/ DOM ELEMENTS-->	
+  <div class="info" style="visibility: hidden;">
+  <p id="closeInfo">close</p>
+    <span>
+      based on the interactive type project <a href="https://type.christpaul.de" target="_blank">herbivore</a> by paul christ.<br/>
+    </span>
+    <div class="column-text">
+      <span>
+        about<br/>
+        info<br/>
+        info<br/>
+      </span>
+      <span>
+        thanks<br/>
+        prof.<br/>
+        prof.<br/>
+      </span>
+      <span>
+        mentor<br/>
+        prof.<br/>
+        date
+      </span>
+      
+    </div>
+  </div>
+	<div class="grid">
+    <header>
+      <p class="header-item" id="info">herbivore<br/> specimen</p>
+      <p class="header-item">
+        <button class="mode" id="start" value="none">start!</button>
+      </p>
+      <p class="header-item">
+        <button class="mode" id="audio-btn" value="none">mic</button>
+      </p>
+      <p class="header-item" id="voice">
+        <button id="voice-start" >→ speech to text</button><br/>
+        <input type="range" min="1.2" max="65" value="15" id="slider" />
+      </p>
+      <p class="header-item" id="axesInfo">
+      </p>
+    </header>
+    <div class="main" id="main">
+      <div id="result" class="textbox" contenteditable  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >hello. how are you?</div>
+    </div>
+    
+  </div>
+  <!--p id="textInput"></p-->  
+  <canvas id="canvas"></canvas>
+
+  <!--VOLUME METER-->
+  <script src="js/audio.js?v=1.0" type="text/javascript"></script>
+  <!--MAIN FUNCTIONS, SETUP, GOOGLE SUGGEST ETC-->
+  <script src="js/main.js?v=1.0" type="text/javascript"></script>
+
+  
+</body>
+</html>
